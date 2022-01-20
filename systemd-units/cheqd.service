@@ -1,0 +1,27 @@
+[Unit]
+Description=CHEQD_NODED Full Node
+
+[Service]
+Environment=CHEQD_NODED_P2P_LADDR=tcp://0.0.0.0:4020
+Environment=CHEQD_NODED_RPC_LADDR=tcp://0.0.0.0:4021
+Environment=CHEQD_NODED_NODE=tcp://127.0.0.1:4021
+Environment=CHEQD_NODED_GRPC_ADDRESS=0.0.0.0:4022
+Environment=CHEQD_NODED_API_ADDRESS=tcp://127.0.0.1:4023
+Environment=CHEQD_NODED_GRPC_WEB_ADDRESS=127.0.0.1:4024
+Environment=CHEQD_NODED_P2P_PERSISTENT_SEEDS=""
+Environment=CHEQD_NODED_P2P_UNCONDITIONAL_PEERS="27fe04f69ef4f203b1fbd515fc0e718a219ca766"
+Environment=CHEQD_NODED_P2P_SEEDS="258a9bfb822637bfca87daaab6181c10e7fd0910@seed1.eu.cheqd.net:26656,f565ff792b20977face9817df6acb268d41d4092@seed2.eu.cheqd.net:26656,388947cc7d901c5c06fedc4c26751634564d68e6@seed3.eu.cheqd.net:26656,9b30307a2a2819790d68c04bb62f5cf4028f447e@seed1.ap.cheqd.net:26656,debcb3fa7d40e681d98bcc7d22278fd58a34b73a@144.76.183.180:1234"
+Environment=CHEQD_NODED_P2P_MAX_NUM_INBOUND_PEERS=5005
+Environment=CHEQD_NODED_P2P_MAX_NUM_OUTBOUND_PEERS=100
+Environment=CHEQD_NODED_PRUNING=nothing
+Environment=CHEQD_NODED_RPC_ADDRESS=127.0.0.1:4022
+Environment=CHEQD_NODED_ADDRESS=tcp://127.0.0.1:4023
+Environment=CHEQD_NODED_SNAPSHOT_INTERVAL=1000
+Environment=CHEQD_NODED_HOME=/gaia1/cheqd
+User=root
+Restart=always
+RestartSec=30
+ExecStart=/root/go/bin/cheqd-noded start
+
+[Install]
+WantedBy=multi-user.target

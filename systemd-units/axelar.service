@@ -1,0 +1,22 @@
+t]
+Description=Axelar Full Node
+
+[Service]
+Environment=AXELARD_P2P_LADDR=tcp://0.0.0.0:2260
+Environment=AXELARD_RPC_LADDR=tcp://0.0.0.0:2261
+Environment=AXELARD_NODE=tcp://127.0.0.1:2261
+Environment=AXELARD_GRPC_ADDRESS=0.0.0.0:2262
+Environment=AXELARD_API_ADDRESS=tcp://127.0.0.1:2263
+Environment=AXELARD_GRPC_WEB_ADDRESS=127.0.0.1:2264
+Environment=AXELARD_P2P_SEEDS="3d67d0646cddcc203b41434aceea64ade22ba6fc@k8s-mainnet-axelarco-79b464ee93-f03cb16c57cf7cb2.elb.us-east-2.amazonaws.com:26656"
+Environment=AXELARD_P2P_PERSISTENT_PEERS="3d67d0646cddcc203b41434aceea64ade22ba6fc@k8s-mainnet-axelarco-79b464ee93-f03cb16c57cf7cb2.elb.us-east-2.amazonaws.com:26656"
+Environment=AXELARD_P2P_MAX_NUM_INBOUND_PEERS=500
+Environment=AXELARD_P2P_MAX_NUM_OUTBOUND_PEERS=100
+LimitNOFILE=49152
+User=root
+Restart=always
+RestartSec=30
+ExecStart=/root/go/bin/axelard start --home /osmo1/axelar
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,22 @@
+t]
+Description=Arkh full node
+[Service]
+Environment=ARKHD_P2P_LADDR=tcp://0.0.0.0:2270
+Environment=ARKHD_RPC_LADDR=tcp://127.0.0.1:2271
+Environment=ARKHD_GRPC_ADDRESS=127.0.0.1:2272
+Environment=ARKHD_API_ADDRESS=tcp://127.0.0.1:2273
+Environment=ARKHD_GRPC_WEB_ADDRESS=127.0.0.1:2274
+Environment=ARKHD_P2P_PERSISTENT_PEERS="808f01d4a7507bf7478027a08d95c575e1b5fa3c@asc-dataseed.arkhadian.com:26656"
+Environment=ARKHD_P2P_SEEDS="808f01d4a7507bf7478027a08d95c575e1b5fa3c@asc-dataseed.arkhadian.com:26656"
+Environment=ARKHD_P2P_INBOUND_PEERS=500
+Environment=ARKHD_P2P_OUTBOUND_PEERS=100
+Environment=ARKHD_PRUNING=nothing
+Environment=ARKHD_TX_INDEX_INDEXER=null
+User=root
+Restart=always
+RestartSec=30
+LimitNOFILE=500000
+ExecStart=/root/go/bin/arkhd start --db_backend rocksdb
+
+[Install]
+WantedBy=multi-user.target

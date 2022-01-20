@@ -1,0 +1,10 @@
+[Unit]
+Description=Hermes
+
+[Service]
+User=root
+ExecStart=/root/.cargo/bin/hermes start
+Restart=always
+RestartSec=30
+[Install]
+WantedBy=multi-user.target
